@@ -31,4 +31,15 @@ public class Main {
         }
         System.out.println(Arrays.toString(reversedArray));
     }
+
+    //alternate
+    // public static void reverseArray (int[] array){
+    //     int halfInd = array.length / 2;
+    //     for(int i = 0 ; i < halfInd; i ++){
+    //         int val = array[i];
+    //         array[i] = array[(array.length - 1) - i];
+    //         array[(array.length - 1) - i] = val;
+    //     }
+    //     System.out.println(Arrays.toString(array));
+    // }
 }
