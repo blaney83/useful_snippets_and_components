@@ -25,6 +25,9 @@ public class Demo {
     }
 
     private static boolean alphabetize(String newSting, LinkedList<String> oldList){
+        //NOTE: currently directly modifies the original value of list, should be abstracted
+        //and passed out as a return value in production. Recommended to use .toLowerCase as
+        //well to eliminate unicode case variance.
         ListIterator<String> stringListIterator = oldList.listIterator();
         while(stringListIterator.hasNext()){
             int comparison = stringListIterator.next().compareTo(newSting);
