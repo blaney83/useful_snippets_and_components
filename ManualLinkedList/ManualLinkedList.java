@@ -1,4 +1,4 @@
-package com.blaney83;
+package io.github.blaney83;
 
 public class ManualLinkedList implements NodeList {
     private ListItem root;
@@ -55,9 +55,6 @@ public class ManualLinkedList implements NodeList {
         ListItem currentItem = this.root;
         while(currentItem != null){
             int comparison = currentItem.getListValue().compareTo(itemValue);
-            System.out.println(comparison);
-            System.out.println(itemValue);
-            System.out.println(currentItem.getListValue());
             if(comparison == 0){
                 if(currentItem == this.root){
                     this.root = currentItem.getNextItem();

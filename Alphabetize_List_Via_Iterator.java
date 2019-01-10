@@ -1,4 +1,4 @@
-package com.blaney83;
+package io.github.blaney83;
 
 import java.util.Iterator;
 import java.util.LinkedList;

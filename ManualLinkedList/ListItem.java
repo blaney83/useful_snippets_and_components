@@ -1,4 +1,4 @@
-package com.blaney83;
+package io.github.blaney83;
 
 public abstract class ListItem {
     protected ListItem previousItem = null;
