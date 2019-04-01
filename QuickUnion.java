@@ -2,6 +2,9 @@
 //value x for index i points to its parent in the tree
 //if (x == i) => i is the root element
 //root i == id[id[..id[i]..]]
+//**** for addn'l flattening see Ackermann Function
+//weighted union with path compression is close to the most 
+//linear algorithm possible
 public class QuickUnion {
 
     private int[] id;
@@ -16,10 +19,15 @@ public class QuickUnion {
             sz[i] = 1;
         }
     }
-    //O(N)
+    //log_2(N)
     private int findRoot(final int val) {
         int parent = val;
         while (parent != id[parent]) {
+            //IMPORTANT vvvv LINE
+            id[parent] = id[id[parent]];
+            //IMPORTANT ^^^^ LINE- flattens tree by setting 
+            //moving the parents of all children on the path
+            //up the tree during each search
             parent = id[parent];
         }
         return parent;
@@ -30,6 +38,10 @@ public class QuickUnion {
     }
     //connects smaller tree to root of bigger tree to prevent
     //non-performant deep, skinny trees
+    //Any sequence of M union operations for N objects
+    //always <= c(N+Mlg*N) or the number of times lg_2(N) must
+    //be run in order to == 1 (iterative logarithm)
+    //NOTE: implementation is union-by-size, not union by height
     public void union(final int valOne, final int valTwo) {
         int i = findRoot(valOne);
         int j = findRoot(valTwo);
