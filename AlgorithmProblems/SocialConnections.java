@@ -15,10 +15,13 @@
 // }
 
 public class TotalSocialConnection {
-
+    //index refers to member, value refers to most recent connection
     private int[] members;
+    //index refers to member, value refers to total "friends" per member
     private int[] networkSize;
+    //stores total members
     private int numMembers;
+    //time in double format, connection as a pair of int memberId's
     private Map<Double, int[]> connectionTimes;
 
     public TotalSocialConnection(int numMembers, LinkedHashMap<Double, int[]> timeSheet){
@@ -44,6 +47,10 @@ public class TotalSocialConnection {
     private boolean union(final int mem1, final int mem2) {
         int root1 = root(mem1);
         int root2 = root(mem2);
+
+        if(root1 == root2){
+            return false;
+        }
 
         if (networkSize[mem1] <= networkSize[mem2]) {
             members[root1] = root2;

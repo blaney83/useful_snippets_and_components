@@ -1,14 +1,20 @@
-//array represents a set of trees "forest"
-//value x for index i points to its parent in the tree
-//if (x == i) => i is the root element
-//root i == id[id[..id[i]..]]
-//**** for addn'l flattening see Ackermann Function
-//weighted union with path compression is close to the most 
-//linear algorithm possible
+//Union-find with specific canonical element. Add a method 
+//find() to the union-find data type so that find(i) returns 
+//the largest element in the connected component containing i. 
+//The operations, union(), connected(), and find() should all 
+//take logarithmic time or better.
+
+//For example, if one of the connected components is 
+//\{1, 2, 6, 9\}{1,2,6,9}, then the find() method should 
+//return 99 for each of the four elements in the connected 
+//components.
+
 public class QuickUnion {
 
     private int[] id;
     private int[] sz;
+    //contains the value of the largest member of the connected tree
+    private int[] max;
 
     public QuickUnion(final int N) {
 
@@ -17,6 +23,7 @@ public class QuickUnion {
         for (int i = 0; i < N; i++) {
             id[i] = i;
             sz[i] = 1;
+            max[i] = i;
         }
     }
     //log_2(N)
@@ -55,6 +62,14 @@ public class QuickUnion {
             id[j] = i;
             sz[i] += sz[j];
         }
-        id[i] = j;
+        if(max[valOne] > max[valTwo]){
+            max[valTwo] = max[valOne];
+        }else{
+            max[valOne] = max[valTwo];
+        }
+    }
+
+    public int findTreeMax(final int val){
+        return max[val];
     }
 }
