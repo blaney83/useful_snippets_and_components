@@ -1,4 +1,6 @@
-
+//Values point to connections between index values
+//ex: [0,1,1,3,4,3] 
+//points {1, 2}, {3, 5} are joined 0, 4 are lone points
 public class QuickFind {
 
     private int[] id;
